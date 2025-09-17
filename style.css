@@ -1,0 +1,299 @@
+/* ---------- General ---------- */
+body {
+  margin: 0;
+  font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
+  background: #0a1d3f; /* dark blue */
+  color: #fff;
+}
+
+h1, h2, p {
+  margin: 0;
+  padding: 0;
+}
+
+/* ---------- Header ---------- */
+/* Sticky header container */
+.header {
+  position: sticky;
+  top: 0;
+  z-index: 1000;
+  background: #0a1d3f;
+  padding: 12px 20px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  box-shadow: 0 4px 8px rgba(0,0,0,0.5);
+}
+
+/* Title */
+.header h1 {
+  font-size: 1.8rem;
+  text-shadow: 1px 1px 4px rgba(0,0,0,0.7);
+  margin: 0;
+}
+
+/* Button container */
+.header-buttons {
+  display: flex;
+  gap: 8px;
+}
+
+/* Buttons */
+.header-buttons button {
+  background: #0059b3;
+  border: none;
+  padding: 8px 14px;
+  color: #fff;
+  font-weight: bold;
+  border-radius: 5px;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  box-shadow: 0 3px 6px rgba(0,0,0,0.4);
+  white-space: nowrap;
+}
+
+.header-buttons button:hover {
+  background: #0073e6;
+  transform: translateY(-2px);
+}
+
+/* ---------- Responsive tweaks ---------- */
+
+/* On smaller screens: stack title above buttons */
+@media (max-width: 600px) {
+  .header {
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+    gap: 10px;
+  }
+
+  .header h1 {
+    font-size: 1.5rem;
+  }
+
+  .header-buttons {
+    justify-content: center;
+    flex-wrap: wrap;
+  }
+}
+
+/* ---------- Quiz Container ---------- */
+#quiz-container {
+  padding: 20px;
+  max-width: 800px;
+  margin: 0 auto;
+}
+
+/* ---------- Question Cards ---------- */
+.question-card {
+  background: linear-gradient(180deg,#00264d,#003366);
+  padding: 18px 22px;
+  margin-bottom: 18px;
+  border-radius: 10px;
+  box-shadow: 0 6px 12px rgba(0,0,0,0.5);
+  transition: transform 0.3s;
+}
+
+.question-card:hover {
+  transform: scale(1.01);
+}
+
+.question-card h2 {
+  font-size: 1.3rem;
+  margin-bottom: 8px;
+}
+
+.question-card p {
+  margin-bottom: 12px;
+}
+
+/* ---------- MCQ Options ---------- */
+.option {
+  background: #004080;
+  padding: 10px 14px;
+  margin-bottom: 8px;
+  border-radius: 6px;
+  cursor: pointer;
+  transition: all 0.2s;
+  box-shadow: 0 3px 6px rgba(0,0,0,0.4);
+}
+
+.option:hover {
+  background: #3399ff;
+  transform: translateY(-2px);
+}
+
+.option.selected {
+  border: 2px solid #fff;
+}
+
+.option.correct {
+  background: #00cc44 !important;
+  color: #fff;
+  font-weight: bold;
+  animation: correctFlash 0.5s ease;
+}
+
+@keyframes correctFlash {
+  0% { transform: scale(1); }
+  50% { transform: scale(1.1); }
+  100% { transform: scale(1); }
+}
+
+/* ---------- Matching / Ordering ---------- */
+.match-container, .order-container {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 15px;
+  align-items: flex-start;
+}
+
+/* Bank (left) and Targets (right) */
+.match-bank, .order-bank, .match-targets, .order-targets {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+  flex: 1;
+  min-height: 120px;
+  padding: 5px;
+  border-radius: 8px;
+  background: rgba(0,0,0,0.05);
+}
+
+.match-bank, .order-bank {
+  border: 2px dashed #3399ff;
+}
+
+/* Drag target (right side boxes) */
+.drag-target {
+  min-height: 50px;
+  display: flex;
+  align-items: center;
+  justify-content: flex-start;
+  gap: 8px;
+  padding: 8px 10px;
+  border: 2px dashed #3399ff;
+  border-radius: 8px;
+  background: rgba(0,0,0,0.1);
+  font-weight: bold;
+}
+
+.drag-target.correct {
+  background: #00cc44 !important;
+  font-weight: bold;
+  animation: correctFlash 0.5s ease;
+}
+
+/* Draggable items */
+.drag-item {
+  background: #0033cc;
+  color: #00ccff;
+  padding: 6px 10px;
+  border-radius: 6px;
+  font-weight: bold;
+  cursor: grab;
+  text-align: center;
+  box-shadow: 0 3px 6px rgba(0,0,0,0.4);
+  user-select: none;
+}
+
+.drag-item:hover {
+  background: #3399ff;
+  transform: translateY(-2px);
+}
+
+/* Feedback */
+.feedback {
+  margin-top: 10px;
+  font-size: 1rem;
+  min-height: 22px;
+}
+
+.correct-label {
+  color: #00ff99;
+  font-weight: bold;
+  animation: correctFlash 0.5s ease;
+}
+
+/* Key / Characteristic inside target */
+.drag-key {
+  color: #00ccff;
+  font-weight: 700;
+}
+
+.drag-separator {
+  color: rgba(255,255,255,0.85);
+}
+
+.drag-characteristic {
+  color: #00ff99;
+  font-weight: 500;
+}
+
+.drag-key.correct {
+  background: rgba(0,204,68,0.12);
+  padding: 2px 6px;
+  border-radius: 6px;
+}
+
+.drag-key:hover {
+  background: #3399ff33; /* semi-transparent highlight */
+  cursor: grab;
+  transform: translateY(-1px);
+  transition: all 0.2s ease;
+}
+
+
+/* ---------- Score & Pass/Fail ---------- */
+#scoreContainer {
+  position: sticky;
+  top: 60px;
+  display: flex;
+  justify-content: flex-end;
+  padding: 10px 20px;
+  z-index: 9;
+}
+
+#score, #passFail {
+  margin-left: 20px;
+  font-size: 1.2rem;
+  font-weight: bold;
+  text-shadow: 1px 1px 4px rgba(0,0,0,0.7);
+  transition: transform 0.5s;
+}
+
+/* ---------- Fireworks ---------- */
+#fireworks {
+  position: fixed;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  pointer-events: none;
+  z-index: 9999;
+  opacity: 0;
+  transition: opacity 450ms ease;
+  background: rgba(0,0,0,0.28); /* semi-transparent dim behind fireworks */
+}
+
+.dimmed {
+  pointer-events: none;
+  filter: brightness(50%);
+}
+
+.drag-target.correct {
+  border: 2px solid #00cc44;
+  background: rgba(0, 204, 68, 0.2);
+}
+
+.drag-target.incorrect {
+  border: 2px solid #cc0044;
+  background: rgba(204, 0, 68, 0.2);
+}
+
+.option.incorrect {
+  background: #cc0044 !important;
+  color: #fff;
+  font-weight: bold;
+}
+
