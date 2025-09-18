@@ -287,3 +287,20 @@ document.addEventListener("DOMContentLoaded", () => {
   function resizeCanvas(){fireworksCanvas.width=window.innerWidth; fireworksCanvas.height=window.innerHeight;}
   resizeCanvas(); window.addEventListener("resize", resizeCanvas);
 });
+
+const feedbackBtn = document.getElementById('feedbackBtn');
+const feedbackModal = document.getElementById('feedbackModal');
+const closeModal = document.getElementById('closeModal');
+
+feedbackBtn.addEventListener('click', () => {
+  feedbackModal.style.display = 'flex';
+});
+
+closeModal.addEventListener('click', () => {
+  feedbackModal.style.display = 'none';
+});
+
+window.addEventListener('click', (e) => {
+  if (e.target === feedbackModal) feedbackModal.style.display = 'none';
+});
+
