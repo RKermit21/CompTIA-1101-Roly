@@ -12,76 +12,46 @@ h1, h2, p {
 }
 
 /* ---------- Header ---------- */
-/* Sticky header container */
 .header {
   position: sticky;
   top: 0;
-  z-index: 1000;
-  background: #0a1d3f;
-  padding: 12px 20px;
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
+  background: linear-gradient(90deg,#001f4d,#004080);
+  padding: 15px 20px;
   box-shadow: 0 4px 8px rgba(0,0,0,0.5);
+  z-index: 10;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
 }
 
-/* Title */
 .header h1 {
   font-size: 1.8rem;
   text-shadow: 1px 1px 4px rgba(0,0,0,0.7);
-  margin: 0;
 }
 
-/* Button container */
-.header-buttons {
-  display: flex;
-  gap: 8px;
-}
-
-/* Buttons */
 .header-buttons button {
   background: #0059b3;
   border: none;
   padding: 8px 14px;
+  margin-left: 8px;
   color: #fff;
   font-weight: bold;
   border-radius: 5px;
   cursor: pointer;
   transition: all 0.3s ease;
   box-shadow: 0 3px 6px rgba(0,0,0,0.4);
-  white-space: nowrap;
 }
 
 .header-buttons button:hover {
-  background: #0073e6;
+  background: #3399ff;
   transform: translateY(-2px);
-}
-
-/* ---------- Responsive tweaks ---------- */
-
-/* On smaller screens: stack title above buttons */
-@media (max-width: 600px) {
-  .header {
-    flex-direction: column;
-    align-items: center;
-    text-align: center;
-    gap: 10px;
-  }
-
-  .header h1 {
-    font-size: 1.5rem;
-  }
-
-  .header-buttons {
-    justify-content: center;
-    flex-wrap: wrap;
-  }
+  box-shadow: 0 6px 10px rgba(0,0,0,0.5);
 }
 
 /* ---------- Quiz Container ---------- */
 #quiz-container {
   padding: 20px;
-  max-width: 800px;
+  max-width: 1000px;
   margin: 0 auto;
 }
 
@@ -281,19 +251,68 @@ h1, h2, p {
   filter: brightness(50%);
 }
 
-.drag-target.correct {
-  border: 2px solid #00cc44;
-  background: rgba(0, 204, 68, 0.2);
+/* ---------- Timer Strobe for Last 3 Minutes ---------- */
+.strobe {
+  animation: strobeRed 1s infinite alternate;
 }
 
+@keyframes strobeRed {
+  0% { color: #ff0000; text-shadow: 0 0 8px #ff6666; }
+  50% { color: #ff9999; text-shadow: 0 0 12px #ff3333; }
+  100% { color: #ff0000; text-shadow: 0 0 8px #ff6666; }
+}
+
+/* ---------- Full Card Highlight ---------- */
+.question-card.correct {
+  background: #00cc44 !important;
+  animation: correctFlash 0.5s ease;
+}
+
+.question-card.incorrect {
+  background: #ff3333 !important;
+  animation: incorrectFlash 0.5s ease;
+}
+
+@keyframes incorrectFlash {
+  0% { transform: scale(1); }
+  50% { transform: scale(1.05); }
+  100% { transform: scale(1); }
+}
+
+/* Optional: make interactive boxes also highlight more clearly */
 .drag-target.incorrect {
-  border: 2px solid #cc0044;
-  background: rgba(204, 0, 68, 0.2);
+  background: #ff6666 !important;
 }
 
+.drag-target.correct {
+  background: #00cc44 !important;
+}
+
+/* MCQ full card highlight (overrides option hover) */
 .option.incorrect {
-  background: #cc0044 !important;
+  background: #ff3333 !important;
+}
+
+.option.correct {
+  background: #00cc44 !important;
+}
+
+/* ---------- Entire Card Highlights ---------- */
+.question-card.correct {
+  background: #00cc44 !important; /* green */
   color: #fff;
-  font-weight: bold;
+  animation: correctFlash 0.5s ease;
+}
+
+.question-card.incorrect {
+  background: #ff3333 !important; /* red */
+  color: #fff;
+  animation: incorrectFlash 0.5s ease;
+}
+
+@keyframes incorrectFlash {
+  0% { transform: scale(1); }
+  50% { transform: scale(1.05); }
+  100% { transform: scale(1); }
 }
 
