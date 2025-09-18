@@ -326,3 +326,87 @@ h1, h2, p {
     touch-action: none;
   }
 }
+
+/* ---------- Feedback Modal ---------- */
+.feedback-modal {
+  display: none;
+  position: fixed;
+  inset: 0;
+  background: rgba(0, 0, 0, 0.6);
+  justify-content: center;
+  align-items: center;
+  z-index: 10000;
+}
+
+.feedback-content {
+  background: linear-gradient(180deg, #001f4d, #004080);
+  color: #fff;
+  padding: 25px;
+  border-radius: 10px;
+  max-width: 400px;
+  width: 90%;
+  text-align: center;
+  box-shadow: 0 6px 12px rgba(0,0,0,0.5);
+  position: relative;
+}
+
+.feedback-close {
+  position: absolute;
+  top: 10px;
+  right: 15px;
+  font-size: 1.5rem;
+  cursor: pointer;
+}
+
+.feedback-content h2 {
+  margin-bottom: 15px;
+  font-size: 1.4rem;
+  text-shadow: 1px 1px 4px rgba(0,0,0,0.7);
+}
+
+.feedback-content p {
+  margin-bottom: 20px;
+}
+
+.feedback-link {
+  padding: 10px 16px;
+  background: #00cc44;
+  color: #fff;
+  border-radius: 6px;
+  font-weight: bold;
+  text-decoration: none;
+  display: inline-block;
+  transition: all 0.3s ease;
+}
+
+.feedback-link:hover {
+  background: #00ff77;
+  transform: translateY(-2px);
+  box-shadow: 0 3px 6px rgba(0,0,0,0.4);
+}
+
+/* ---------- Footer Button ---------- */
+.footer-buttons {
+  text-align: center;
+  margin: 30px 0;
+}
+
+.footer-buttons button {
+  /* Inherit header button styles */
+  background: #0059b3;
+  border: none;
+  padding: 8px 14px;
+  color: #fff;
+  font-weight: bold;
+  border-radius: 5px;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  box-shadow: 0 3px 6px rgba(0,0,0,0.4);
+}
+
+.footer-buttons button:hover {
+  background: #3399ff;
+  transform: translateY(-2px);
+  box-shadow: 0 6px 10px rgba(0,0,0,0.5);
+}
+
