@@ -105,10 +105,8 @@ h1, h2, p {
   animation: correctFlash 0.5s ease;
 }
 
-@keyframes correctFlash {
-  0% { transform: scale(1); }
-  50% { transform: scale(1.1); }
-  100% { transform: scale(1); }
+.option.incorrect {
+  background: #ff3333 !important;
 }
 
 /* ---------- Matching / Ordering ---------- */
@@ -119,7 +117,6 @@ h1, h2, p {
   align-items: flex-start;
 }
 
-/* Bank (left) and Targets (right) */
 .match-bank, .order-bank, .match-targets, .order-targets {
   display: flex;
   flex-direction: column;
@@ -135,7 +132,6 @@ h1, h2, p {
   border: 2px dashed #3399ff;
 }
 
-/* Drag target (right side boxes) */
 .drag-target {
   min-height: 50px;
   display: flex;
@@ -151,11 +147,12 @@ h1, h2, p {
 
 .drag-target.correct {
   background: #00cc44 !important;
-  font-weight: bold;
-  animation: correctFlash 0.5s ease;
 }
 
-/* Draggable items */
+.drag-target.incorrect {
+  background: #ff6666 !important;
+}
+
 .drag-item {
   background: #0033cc;
   color: #00ccff;
@@ -173,32 +170,9 @@ h1, h2, p {
   transform: translateY(-2px);
 }
 
-/* Feedback */
-.feedback {
-  margin-top: 10px;
-  font-size: 1rem;
-  min-height: 22px;
-}
-
-.correct-label {
-  color: #00ff99;
-  font-weight: bold;
-  animation: correctFlash 0.5s ease;
-}
-
-/* Key / Characteristic inside target */
 .drag-key {
   color: #00ccff;
   font-weight: 700;
-}
-
-.drag-separator {
-  color: rgba(255,255,255,0.85);
-}
-
-.drag-characteristic {
-  color: #00ff99;
-  font-weight: 500;
 }
 
 .drag-key.correct {
@@ -208,12 +182,16 @@ h1, h2, p {
 }
 
 .drag-key:hover {
-  background: #3399ff33; /* semi-transparent highlight */
+  background: #3399ff33;
   cursor: grab;
   transform: translateY(-1px);
   transition: all 0.2s ease;
 }
 
+.drag-characteristic {
+  color: #00ff99;
+  font-weight: 500;
+}
 
 /* ---------- Score & Pass/Fail ---------- */
 #scoreContainer {
@@ -243,7 +221,7 @@ h1, h2, p {
   z-index: 9999;
   opacity: 0;
   transition: opacity 450ms ease;
-  background: rgba(0,0,0,0.28); /* semi-transparent dim behind fireworks */
+  background: rgba(0,0,0,0.28);
 }
 
 .dimmed {
@@ -251,7 +229,7 @@ h1, h2, p {
   filter: brightness(50%);
 }
 
-/* ---------- Timer Strobe for Last 3 Minutes ---------- */
+/* ---------- Timer Strobe ---------- */
 .strobe {
   animation: strobeRed 1s infinite alternate;
 }
@@ -262,15 +240,23 @@ h1, h2, p {
   100% { color: #ff0000; text-shadow: 0 0 8px #ff6666; }
 }
 
-/* ---------- Full Card Highlight ---------- */
+/* ---------- Card Highlights ---------- */
 .question-card.correct {
   background: #00cc44 !important;
+  color: #fff;
   animation: correctFlash 0.5s ease;
 }
 
 .question-card.incorrect {
   background: #ff3333 !important;
+  color: #fff;
   animation: incorrectFlash 0.5s ease;
+}
+
+@keyframes correctFlash {
+  0% { transform: scale(1); }
+  50% { transform: scale(1.1); }
+  100% { transform: scale(1); }
 }
 
 @keyframes incorrectFlash {
@@ -279,40 +265,64 @@ h1, h2, p {
   100% { transform: scale(1); }
 }
 
-/* Optional: make interactive boxes also highlight more clearly */
-.drag-target.incorrect {
-  background: #ff6666 !important;
-}
+/* ---------- Mobile / Touch Fixes ---------- */
+@media (max-width: 768px) {
+  .header {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+    padding: 12px 10px;
+    z-index: 999;
+  }
 
-.drag-target.correct {
-  background: #00cc44 !important;
-}
+  .header h1 {
+    font-size: 1.6rem;
+    margin-bottom: 6px;
+  }
 
-/* MCQ full card highlight (overrides option hover) */
-.option.incorrect {
-  background: #ff3333 !important;
-}
+  .header-buttons {
+    display: flex;
+    justify-content: center;
+    gap: 8px;
+    flex-wrap: wrap;
+    width: auto;
+  }
 
-.option.correct {
-  background: #00cc44 !important;
-}
+  .header-buttons button {
+    flex: none;
+    min-width: 100px;
+    padding: 8px 12px;
+    font-size: 0.9rem;
+  }
 
-/* ---------- Entire Card Highlights ---------- */
-.question-card.correct {
-  background: #00cc44 !important; /* green */
-  color: #fff;
-  animation: correctFlash 0.5s ease;
-}
+  /* Adjust score/timer to fully show below header + buttons */
+  #scoreContainer {
+    position: fixed;
+    top: calc(28px + 1.6rem + 40px); /* header padding + title + estimated buttons height */
+    right: 0;
+    width: 100%;
+    display: flex;
+    justify-content: flex-end;
+    padding: 8px 20px;
+    z-index: 998;
+  }
 
-.question-card.incorrect {
-  background: #ff3333 !important; /* red */
-  color: #fff;
-  animation: incorrectFlash 0.5s ease;
-}
+  /* Push quiz container down so nothing overlaps header or score */
+  #quiz-container {
+    margin-top: 185px; /* dynamic enough for header + buttons + score */
+    padding: 10px;
+  }
 
-@keyframes incorrectFlash {
-  0% { transform: scale(1); }
-  50% { transform: scale(1.05); }
-  100% { transform: scale(1); }
-}
+  .option, .drag-item, .drag-target {
+    padding: 12px;
+    font-size: 1rem;
+  }
 
+  .drag-item, .drag-key {
+    touch-action: none;
+  }
+}
