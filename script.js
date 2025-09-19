@@ -68,93 +68,114 @@ document.addEventListener("DOMContentLoaded", () => {
   }
 
   // ---------- Questions placeholder ----------
-   const questions = [
-    // MCQs 1-20 (scenario style)
-    {type:"mcq", title:"Laptop Performance", text:"A user complains their laptop is slow after installing multiple apps. First step?", options:["Restart laptop","Reinstall OS","Replace HDD","Ignore issue"], answer:"Restart laptop"},
-    {type:"mcq", title:"Battery Issue", text:"Laptop battery drains quickly even after full charge. First action?", options:["Check running processes","Replace battery","Update BIOS","Ignore"], answer:"Check running processes"},
-    {type:"mcq", title:"No Internet", text:"User cannot access Wi-Fi. What is the first check?", options:["Physical connection","Replace router","Reset modem","Call ISP"], answer:"Physical connection"},
-    {type:"mcq", title:"Blue Screen", text:"Laptop shows BSOD after update. Recommended step?", options:["Boot to safe mode","Reinstall OS","Replace RAM","Ignore"], answer:"Boot to safe mode"},
-    {type:"mcq", title:"Software Install", text:"New software fails installation. First troubleshooting?", options:["Check system requirements","Reinstall OS","Replace HDD","Ignore"], answer:"Check system requirements"},
-    {type:"mcq", title:"Printer Issue", text:"Printer won't print but is online. First step?", options:["Check print queue","Replace printer","Update driver","Ignore"], answer:"Check print queue"},
-    {type:"mcq", title:"Email Issue", text:"User cannot send emails. First action?", options:["Check SMTP settings","Replace PC","Reinstall Office","Ignore"], answer:"Check SMTP settings"},
-    {type:"mcq", title:"External Drive", text:"External HDD not recognized. Initial troubleshooting?", options:["Check cable/port","Replace drive","Format HDD","Ignore"], answer:"Check cable/port"},
-    {type:"mcq", title:"Slow Boot", text:"Laptop takes 5+ minutes to boot. Likely cause?", options:["Too many startup programs","Faulty RAM","Damaged HDD","Ignore"], answer:"Damaged HDD"},
-    {type:"mcq", title:"Network Latency", text:"Ping to internal server is high. First check?", options:["Check cabling","Replace switch","Update NIC driver","Ignore"], answer:"Check cabling"},
-    {type:"mcq", title:"Malware", text:"Suspicious pop-ups after browsing. First step?", options:["Run antivirus scan","Reinstall OS","Replace browser","Ignore"], answer:"Run antivirus scan"},
-    {type:"mcq", title:"Peripheral Issue", text:"Mouse intermittently not working. First action?", options:["Try different USB port","Replace mouse","Reinstall driver","Ignore"], answer:"Try different USB port"},
-    {type:"mcq", title:"OS Update", text:"User cannot install updates. First step?", options:["Check disk space","Reinstall OS","Replace SSD","Ignore"], answer:"Check disk space"},
-    {type:"mcq", title:"Wi-Fi Drops", text:"Laptop frequently loses Wi-Fi. First troubleshooting step?", options:["Check router signal","Replace NIC","Update firmware","Ignore"], answer:"Check router signal"},
-    {type:"mcq", title:"File Corruption", text:"Documents cannot open, files corrupted. Initial troubleshooting?", options:["Run chkdsk","Replace HDD","Restore OS","Ignore"], answer:"Run chkdsk"},
-    {type:"mcq", title:"Audio Issue", text:"No sound on laptop. First check?", options:["Check audio settings","Replace speakers","Reinstall driver","Ignore"], answer:"Check audio settings"},
-    {type:"mcq", title:"Display Issue", text:"Screen flickers randomly. Initial step?", options:["Update GPU driver","Replace display","Reboot PC","Ignore"], answer:"Update GPU driver"},
-    {type:"mcq", title:"USB Device", text:"USB device not detected. First step?", options:["Try different port","Replace device","Reinstall driver","Ignore"], answer:"Try different port"},
-    {type:"mcq", title:"VPN Issue", text:"User cannot connect to VPN. First action?", options:["Check credentials","Replace PC","Reinstall VPN client","Ignore"], answer:"Check credentials"},
-    {type:"mcq", title:"Browser Crash", text:"Browser crashes on multiple sites. First troubleshooting?", options:["Clear cache and cookies","Reinstall OS","Update router","Ignore"], answer:"Clear cache and cookies"},
+  // ---------- Questions ----------
+const questions = [
+  // MCQs 1–30
+  {type:"mcq", title:"Laptop Display", text:"Which of the following would be the MOST likely reason for a laptop display to be very dim, even when set to maximum brightness?", options:["Failed backlight","Disconnected antenna","Low refresh rate","Damaged LCD inverter"], answer:"Failed backlight"},
+  {type:"mcq", title:"Networking Cables", text:"Which of the following network cables uses twisted pairs of copper wires and RJ45 connectors?", options:["Coaxial","Fiber","Twisted pair","Serial"], answer:"Twisted pair"},
+  {type:"mcq", title:"RAID Levels", text:"Which RAID level provides fault tolerance through disk mirroring?", options:["RAID 0","RAID 1","RAID 5","RAID 10"], answer:"RAID 1"},
+  {type:"mcq", title:"Laptop Memory", text:"Which of the following memory types is most commonly used in laptops?", options:["DIMM","SODIMM","SIMM","ECC"], answer:"SODIMM"},
+  {type:"mcq", title:"CPU Sockets", text:"Which type of CPU socket uses pins on the motherboard instead of the CPU?", options:["LGA","PGA","ZIF","Slot 1"], answer:"LGA"},
+  {type:"mcq", title:"Mobile Charging", text:"Which mobile device connector type is reversible?", options:["Lightning","Micro-USB","Mini-USB","Serial"], answer:"Lightning"},
+  {type:"mcq", title:"Wireless Standards", text:"Which wireless standard operates only in the 5 GHz frequency range?", options:["802.11a","802.11b","802.11g","802.11n"], answer:"802.11a"},
+  {type:"mcq", title:"Email Protocols", text:"Which of the following protocols is used to send email messages?", options:["SMTP","IMAP","POP3","HTTPS"], answer:"SMTP"},
+  {type:"mcq", title:"Cloud Computing", text:"Which cloud service model provides virtualized hardware resources but requires customers to install and manage their own operating system and apps?", options:["IaaS","PaaS","SaaS","Hybrid"], answer:"IaaS"},
+  {type:"mcq", title:"Printer Types", text:"Which type of printer uses toner cartridges and a fuser assembly?", options:["Laser","Inkjet","Thermal","Impact"], answer:"Laser"},
+  {type:"mcq", title:"Wireless Security", text:"Which of the following provides the strongest wireless security?", options:["WEP","WPA","WPA2","WPA3"], answer:"WPA3"},
+  {type:"mcq", title:"Networking Devices", text:"Which device forwards packets between networks based on IP address?", options:["Router","Switch","Hub","Bridge"], answer:"Router"},
+  {type:"mcq", title:"Contactless Tech", text:"Which technology allows smartphones to be used for tap-to-pay purchases?", options:["NFC","Bluetooth","Infrared","Hotspot"], answer:"NFC"},
+  {type:"mcq", title:"Expansion Slots", text:"Which of these motherboard expansion slots is commonly used for graphics adapters?", options:["PCIe","AGP","ISA","PCI"], answer:"PCIe"},
+  {type:"mcq", title:"Fiber Connectors", text:"Which connector is commonly used with fiber optic cables?", options:["LC","RJ45","BNC","DB-9"], answer:"LC"},
+  {type:"mcq", title:"Mobile OS", text:"Which of the following mobile operating systems is based on Linux?", options:["Android","iOS","Blackberry","Windows Mobile"], answer:"Android"},
+  {type:"mcq", title:"Display Tech", text:"Which display technology uses organic compounds that emit light when voltage is applied?", options:["OLED","LCD","Plasma","LED"], answer:"OLED"},
+  {type:"mcq", title:"Windows Commands", text:"Which Windows command displays the current IP configuration of the system?", options:["ipconfig","ifconfig","ping","netstat"], answer:"ipconfig"},
+  {type:"mcq", title:"Ports", text:"Which port is the default for HTTPS traffic?", options:["443","80","21","25"], answer:"443"},
+  {type:"mcq", title:"Virtualization", text:"Which CPU feature is required to support virtual machines?", options:["Intel VT/AMD-V","ECC RAM","UEFI","RAID"], answer:"Intel VT/AMD-V"},
+  {type:"mcq", title:"Biometrics", text:"Which of the following is an example of biometric authentication?", options:["Fingerprint","PIN","Password","Token"], answer:"Fingerprint"},
+  {type:"mcq", title:"Storage Performance", text:"Which storage type provides the fastest overall performance?", options:["NVMe SSD","SATA SSD","HDD","Tape"], answer:"NVMe SSD"},
+  {type:"mcq", title:"Mobile Settings", text:"Which mobile device setting disables all wireless communication?", options:["Airplane mode","Hotspot","Tethering","Roaming"], answer:"Airplane mode"},
+  {type:"mcq", title:"Networking Devices", text:"Which device is used to separate broadcast domains?", options:["Router","Hub","Switch","Repeater"], answer:"Router"},
+  {type:"mcq", title:"Mobile Tracking", text:"Which feature can locate a lost or stolen smartphone?", options:["Find My Phone","Tethering","AirDrop","Hotspot"], answer:"Find My Phone"},
+  {type:"mcq", title:"Cloud Services", text:"Which cloud model delivers fully managed software over the internet?", options:["SaaS","PaaS","IaaS","Hybrid"], answer:"SaaS"},
+  {type:"mcq", title:"Firmware", text:"Which component stores BIOS/UEFI firmware?", options:["Flash memory","RAM","CMOS battery","HDD"], answer:"Flash memory"},
+  {type:"mcq", title:"Impact Printers", text:"Which consumable is used in an impact printer?", options:["Ribbon","Toner","Ink cartridge","Drum"], answer:"Ribbon"},
+  {type:"mcq", title:"Coax Connectors", text:"Which connector type is used with coaxial cables?", options:["BNC","RJ45","SC","LC"], answer:"BNC"},
+  {type:"mcq", title:"Cellular Tech", text:"Which mobile technology provides internet access through cellular towers?", options:["Cellular","Infrared","Bluetooth","NFC"], answer:"Cellular"},
 
-    // Matching 21-35
-    {type:"match", title:"RAID Types", text:"Match RAID type to characteristic:", pairs:[
-      {key:"RAID 0", value:"Striping for speed, no redundancy"},
-      {key:"RAID 1", value:"Mirroring for redundancy"},
-      {key:"RAID 5", value:"Striping with parity"},
-      {key:"RAID 10", value:"Striping + mirroring"}
-    ]},
-    {type:"match", title:"Ports", text:"Match port to device:", pairs:[
-      {key:"HDMI", value:"Monitor"},
-      {key:"USB-C", value:"Phone/External drive"},
-      {key:"Ethernet", value:"Network"},
-      {key:"3.5mm Audio", value:"Headphones"}
-    ]},
-    {type:"match", title:"Processor Types", text:"Match processor to use:", pairs:[
-      {key:"i3", value:"Basic office use"},
-      {key:"i5", value:"Midrange performance"},
-      {key:"i7", value:"High performance"},
-      {key:"i9", value:"Extreme performance"}
-    ]},
-    {type:"match", title:"Storage Types", text:"Match storage to feature:", pairs:[
-      {key:"HDD", value:"High capacity, slower"},
-      {key:"SSD", value:"Fast, less capacity"},
-      {key:"NVMe", value:"Very fast, expensive"},
-      {key:"Hybrid", value:"Combo of SSD+HDD"}
-    ]},
-    {type:"match", title:"Network Types", text:"Match network type to speed:", pairs:[
-      {key:"Ethernet", value:"1 Gbps"},
-      {key:"Wi-Fi 5", value:"300 Mbps"},
-      {key:"Wi-Fi 6", value:"1 Gbps+"},
-      {key:"Fiber", value:"10 Gbps"}
-    ]},
-    {type:"match", title:"Cable Types", text:"Match cable to use:", pairs:[
-      {key:"Cat5e", value:"Standard ethernet"},
-      {key:"Cat6", value:"High speed ethernet"},
-      {key:"HDMI", value:"Video/audio"},
-      {key:"USB", value:"Peripheral devices"}
-    ]},
-    {type:"match", title:"IP Classes", text:"Match IP class to usage:", pairs:[
-      {key:"Class A", value:"Large networks"},
-      {key:"Class B", value:"Medium networks"},
-      {key:"Class C", value:"Small networks"},
-      {key:"Class D", value:"Multicast"}
-    ]},
-    {type:"match", title:"Troubleshooting Steps", text:"Match step to scenario:", pairs:[
-      {key:"Check logs", value:"App crash"},
-      {key:"Reboot device", value:"Frozen system"},
-      {key:"Replace hardware", value:"Faulty RAM"},
-      {key:"Update drivers", value:"Device malfunction"}
-    ]},
+  // Matching 31–40
+  {type:"match", title:"Networking Ports", text:"Match service to default port:", pairs:[
+    {key:"HTTP", value:"80"},
+    {key:"HTTPS", value:"443"},
+    {key:"FTP", value:"21"},
+    {key:"SMTP", value:"25"}
+  ]},
+  {type:"match", title:"Storage Media", text:"Match storage type to description:", pairs:[
+    {key:"SSD", value:"Fast, no moving parts"},
+    {key:"HDD", value:"Spinning platters"},
+    {key:"Tape", value:"Sequential access"},
+    {key:"Optical", value:"CD/DVD/Blu-ray"}
+  ]},
+  {type:"match", title:"Wireless Standards", text:"Match Wi-Fi standard to frequency:", pairs:[
+    {key:"802.11a", value:"5 GHz"},
+    {key:"802.11b", value:"2.4 GHz"},
+    {key:"802.11g", value:"2.4 GHz"},
+    {key:"802.11n", value:"2.4 and 5 GHz"}
+  ]},
+  {type:"match", title:"Connector Types", text:"Match connector to use:", pairs:[
+    {key:"RJ45", value:"Ethernet"},
+    {key:"RJ11", value:"Telephone"},
+    {key:"LC", value:"Fiber"},
+    {key:"HDMI", value:"Display"}
+  ]},
+  {type:"match", title:"Mobile Tech", text:"Match technology to description:", pairs:[
+    {key:"NFC", value:"Tap-to-pay"},
+    {key:"Bluetooth", value:"Short-range PAN"},
+    {key:"Hotspot", value:"Share cellular data"},
+    {key:"Airplane mode", value:"Disable wireless"}
+  ]},
+  {type:"match", title:"Printer Types", text:"Match printer to characteristic:", pairs:[
+    {key:"Laser", value:"Uses toner"},
+    {key:"Inkjet", value:"Sprays liquid ink"},
+    {key:"Thermal", value:"Heated paper"},
+    {key:"Impact", value:"Print head with ribbon"}
+  ]},
+  {type:"match", title:"Cables", text:"Match cable type to feature:", pairs:[
+    {key:"Cat5e", value:"1 Gbps"},
+    {key:"Cat6", value:"10 Gbps (short)"},
+    {key:"RG6", value:"Coaxial"},
+    {key:"USB-C", value:"Reversible connector"}
+  ]},
+  {type:"match", title:"Security Factors", text:"Match authentication factor to example:", pairs:[
+    {key:"Something you know", value:"Password"},
+    {key:"Something you have", value:"Smart card"},
+    {key:"Something you are", value:"Fingerprint"},
+    {key:"Somewhere you are", value:"Geolocation"}
+  ]},
+  {type:"match", title:"Cloud Models", text:"Match model to description:", pairs:[
+    {key:"IaaS", value:"Customer manages OS/apps"},
+    {key:"PaaS", value:"Customer manages apps only"},
+    {key:"SaaS", value:"Fully managed apps"},
+    {key:"Hybrid", value:"Combination of models"}
+  ]},
+  {type:"match", title:"Protocols", text:"Match protocol to purpose:", pairs:[
+    {key:"DNS", value:"Resolves hostnames"},
+    {key:"DHCP", value:"Assigns IPs"},
+    {key:"SNMP", value:"Manages devices"},
+    {key:"LDAP", value:"Directory services"}
+  ]},
 
-    // Ordering 36-50
-    {type:"order", title:"PC Boot Steps", text:"Order PC boot steps correctly:", steps:["POST","BIOS initialization","Load OS","User login"]},
-    {type:"order", title:"Software Troubleshooting", text:"Order steps to troubleshoot app crash:", steps:["Reproduce issue","Check logs","Check updates","Apply fix"]},
-    {type:"order", title:"Network Troubleshooting", text:"Order steps for no internet:", steps:["Check cables","Ping router","Check DNS","Restart PC"]},
-    {type:"order", title:"Customer Ticket Resolution", text:"Order steps to resolve ticket:", steps:["Acknowledge ticket","Diagnose issue","Implement solution","Follow-up with user"]},
-    {type:"order", title:"App Deployment Steps", text:"Order steps to deploy app:", steps:["Build","Test","Deploy","Monitor"]},
-    {type:"order", title:"Disk Maintenance", text:"Order disk maintenance steps:", steps:["Backup data","Run chkdsk","Defragment","Verify integrity"]},
-    {type:"order", title:"User Onboarding", text:"Order user onboarding steps:", steps:["Create account","Assign permissions","Provide training","Confirm access"]},
-    {type:"order", title:"VPN Setup", text:"Order steps to configure VPN:", steps:["Install client","Add server info","Authenticate","Connect"]},
-    {type:"order", title:"Software Update", text:"Order steps to update software:", steps:["Check update","Download","Install","Verify"]},
-    {type:"order", title:"Incident Response", text:"Order incident response steps:", steps:["Identify","Contain","Eradicate","Recover"]},
-    {type:"order", title:"New PC Setup", text:"Order new PC setup steps:", steps:["Unbox","Install OS","Install drivers","Verify functionality"]},
-    {type:"order", title:"Printer Troubleshooting", text:"Order steps for printer not printing:", steps:["Check cables","Check drivers","Restart printer","Test print"]}
-  ];
+  // Ordering 41–50
+  {type:"order", title:"PC Boot Process", text:"Put the steps of the PC boot process in order:", steps:["POST","BIOS initialization","Load OS","User login"]},
+  {type:"order", title:"Software Troubleshooting", text:"Put software troubleshooting steps in correct order:", steps:["Reproduce issue","Check logs","Check updates","Apply fix"]},
+  {type:"order", title:"No Internet", text:"Steps to troubleshoot no internet connectivity:", steps:["Check cables","Ping router","Check DNS","Restart PC"]},
+  {type:"order", title:"Customer Ticket", text:"Steps to resolve a support ticket:", steps:["Acknowledge","Diagnose","Implement","Follow-up"]},
+  {type:"order", title:"App Deployment", text:"Steps to deploy an app:", steps:["Build","Test","Deploy","Monitor"]},
+  {type:"order", title:"Disk Maintenance", text:"Steps for disk maintenance:", steps:["Backup","Run chkdsk","Defragment","Verify integrity"]},
+  {type:"order", title:"User Onboarding", text:"Steps for onboarding a new user:", steps:["Create account","Assign permissions","Train","Confirm access"]},
+  {type:"order", title:"VPN Setup", text:"Steps to configure a VPN:", steps:["Install client","Add server","Authenticate","Connect"]},
+  {type:"order", title:"Software Update", text:"Steps to update software:", steps:["Check update","Download","Install","Verify"]},
+  {type:"order", title:"Incident Response", text:"Steps of incident response:", steps:["Identify","Contain","Eradicate","Recover"]}
+];
 
   // ---------- Helpers ----------
   function shuffleArray(array){for(let i=array.length-1;i>0;i--){const j=Math.floor(Math.random()*(i+1)); [array[i],array[j]]=[array[j],array[i]];}}
